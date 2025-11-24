@@ -1,12 +1,11 @@
 // ===================================
-// 1. INGRESO AL SITIO (Pantalla de Bienvenida)
+// 1. INGRESO AL SITIO
 // ===================================
 
 function enterSite() {
     document.getElementById('welcome-screen').style.display = 'none';
     document.getElementById('main-content').style.display = 'block';
-    // Opcional: Si tienes música de fondo, actívala aquí
-    // document.getElementById('music-player').play();
+    // Música desactivada según solicitud
 }
 
 
@@ -14,7 +13,8 @@ function enterSite() {
 // 2. CONTADOR REGRESIVO
 // ===================================
 
-// Establece la fecha de la boda (AÑO, MES (0=Enero), DÍA, HORA)
+// Fecha de la boda: 21 de febrero de 2026, 5:00 PM (17:00:00)
+// La zona horaria no afecta la función getTime(), pero se usa en el agendamiento.
 const weddingDate = new Date("Feb 21, 2026 17:00:00").getTime();
 
 const countdownFunction = setInterval(function() {
@@ -27,7 +27,7 @@ const countdownFunction = setInterval(function() {
     const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
     const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-    // Asegura que los números tengan 2 dígitos (ej: 05)
+    // Actualiza los elementos HTML
     document.getElementById("days").innerHTML = String(days).padStart(2, '0');
     document.getElementById("hours").innerHTML = String(hours).padStart(2, '0');
     document.getElementById("minutes").innerHTML = String(minutes).padStart(2, '0');
@@ -72,7 +72,12 @@ document.addEventListener('DOMContentLoaded', () => {
     // 4. ENVÍO DE FORMULARIOS A GOOGLE FORMS
     // ===================================
     
-    // Función genérica para manejar el envío
+    // URL de Envío de Google Forms (CORREGIDA a /formResponse)
+    // ID del Formulario: 1FAIpQLSdaknnJOn8dhcNYQmf5uk9wYvXVrTeF_793PhdjdvFfjRACUA
+    const RSVP_FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSdaknnJOn8dhcNYQmf5uk9wYvXVrTeF_793PhdjdvFfjRACUA/formResponse";
+    
+    // Se elimina la funcionalidad de Sugerir Canción
+
     function handleFormSubmit(formId, successMessageId, googleFormUrl) {
         const form = document.getElementById(formId);
         const messageDisplay = document.getElementById(successMessageId);
@@ -85,32 +90,23 @@ document.addEventListener('DOMContentLoaded', () => {
             submitButton.disabled = true;
             submitButton.textContent = 'Enviando...';
 
-            // Recolectar datos del formulario
             const formData = new FormData(form);
             const params = new URLSearchParams();
 
             // Construye los parámetros usando los nombres de campo de Google (entry.XXXXX)
             for (let [name, value] of formData.entries()) {
-                // Si es un radio button de asistencia, solo enviar el valor si está marcado
-                if (formId === 'rsvp-form' && name.startsWith('entry.') && value !== 'Si asisto' && value !== 'No asisto') {
-                    // Ignora otros campos radio si no están marcados
-                } else {
-                    params.append(name, value);
-                }
+                params.append(name, value);
             }
 
             try {
-                // El envío a Google Forms debe hacerse usando un POST request a la URL de respuesta
+                // Envío con POST a la URL de respuesta
                 const response = await fetch(googleFormUrl, {
                     method: 'POST',
-                    mode: 'no-cors', // Necesario para evitar errores CORS en la respuesta, ya que Google Forms no devuelve JSON
+                    mode: 'no-cors', 
                     body: params
                 });
 
-                // Aunque la respuesta es 'no-cors' y no se puede inspeccionar,
-                // si el fetch se completa sin errores, asumimos éxito.
-
-                messageDisplay.textContent = '✅ ¡Información enviada con éxito! Gracias.';
+                messageDisplay.textContent = '✅ ¡Confirmación enviada con éxito! Gracias.';
                 form.reset();
                 
             } catch (error) {
@@ -120,18 +116,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Restaura el botón después de unos segundos
                 setTimeout(() => {
                     submitButton.disabled = false;
-                    submitButton.textContent = (formId === 'rsvp-form') ? 'Enviar Confirmación' : 'Sugerir';
+                    submitButton.textContent = 'Enviar Confirmación';
                 }, 3000);
             }
         });
     }
 
-    // --- Configuración de las URLs de Google Forms ---
-    // REEMPLAZA ESTAS URLs con la URL de ENVÍO de tu Google Form
-    const RSVP_FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSdaknnJOn8dhcNYQmf5uk9wYvXVrTeF_793PhdjdvFfjRACUA/viewform";
-    const SONG_FORM_URL = "https://music.youtube.com/search?q=everybody+wants+to+rule+the+world";
-    
+    // Inicializar el manejo del formulario de RSVP
     handleFormSubmit('rsvp-form', 'rsvp-message', RSVP_FORM_URL);
-    handleFormSubmit('song-form', 'song-message', SONG_FORM_URL);
 
 });

@@ -17,7 +17,6 @@ body {
     line-height: 1.6;
     background-color: var(--secondary-color);
     color: #333;
-    /* Esto simula el scroll vertical de una app/web mobile */
 }
 
 /* 2. PANTALLA DE BIENVENIDA (SPLASH) */
@@ -27,7 +26,8 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background: url('assets/background.jpg') no-repeat center center/cover; /* Reemplaza con tu imagen */
+    /* RUTA A TU IMAGEN DE FONDO */
+    background: url('./assets/background.jpg') no-repeat center center/cover; 
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -83,7 +83,7 @@ h2 {
 .hero-section .ampersand {
     font-style: italic;
     font-size: 0.8em;
-    display: block; /* Para que caiga en línea diferente en mobile */
+    display: block;
 }
 .hero-section .date {
     font-size: 1.2em;
@@ -154,7 +154,7 @@ h2 {
 /* 7. GALERÍA */
 .photo-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr; /* 2 columnas en mobile */
+    grid-template-columns: 1fr 1fr; 
     gap: 10px;
 }
 .photo-grid img {
@@ -166,7 +166,7 @@ h2 {
 
 /* 8. MODAL (Pop-up) */
 .modal {
-    display: none; /* Oculto por defecto */
+    display: none; 
     position: fixed;
     z-index: 101;
     left: 0;
@@ -174,15 +174,15 @@ h2 {
     width: 100%;
     height: 100%;
     overflow: auto;
-    background-color: rgba(0,0,0,0.4); /* Fondo semi-transparente */
+    background-color: rgba(0,0,0,0.4); 
 }
 
 .modal-content {
     background-color: white;
-    margin: 15% auto; /* Centrar verticalmente */
+    margin: 15% auto; 
     padding: 20px;
     border: 1px solid #888;
-    width: 90%; /* Ancho en mobile */
+    width: 90%; 
     max-width: 400px;
     border-radius: 10px;
     position: relative;
