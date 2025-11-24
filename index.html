@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nuestra Boda | <div Angela=""></div> & <div Alejandro=""></div></title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div id="welcome-screen">
+        <h1><div Angela=""></div> & <div Alejandro=""></div></h1>
+        <p>¡Te invitamos a compartir nuestra felicidad!</p>
+        <button onclick="enterSite()">Ingresar</button>
+        </div>
+
+    <div id="main-content" style="display: none;">
+
+        <section class="hero-section">
+            <div class="names">
+                <span><div Angela=""></div></span>
+                <span class="ampersand">&</span>
+                <span><div Alejandro=""></div></span>
+            </div>
+            <p class="date">15 · FEB · 2026</p>
+        </section>
+
+        <section class="countdown-section">
+            <h2>Falta</h2>
+            <div id="countdown" class="timer">
+                <div class="time-box"><span id="days">00</span> DÍAS</div>
+                <div class="time-box"><span id="hours">00</span> HS</div>
+                <div class="time-box"><span id="minutes">00</span> MIN</div>
+                <div class="time-box"><span id="seconds">00</span> SEG</div>
+            </div>
+        </section>
+
+        <section class="event-section ceremony">
+            <h3>Ceremonia</h3>
+            <p>Sábado, 21 de Febrero - 17:00 hs</p>
+            <p>Parroquia <div Episcopal=""></div></p>
+            <p><div Calle="" 14="" N°="" 10-28,="" Garagoa="" -="" Boyacá=""></div></p>
+            <div class="buttons-container">
+                <a href="[LINK GOOGLE MAPS CEREMONIA]" target="_blank" class="btn primary">¿Cómo llegar?</a>
+                <button class="btn secondary" data-modal="rsvp">Confirmar asistencia</button>
+            </div>
+        </section>
+        
+        <section class="event-section party">
+            <h3>Fiesta</h3>
+            <p>Sábado, 21 de Febrero - 19:00 hs</p>
+            <p>Salón de eventos <div La="" Uvita=""></div></p>
+            <p><div Salida="" a="" Miraflores=""></div></p>
+            <div class="buttons-container">
+                <a href="[LINK GOOGLE MAPS FIESTA]" target="_blank" class="btn primary">¿Cómo llegar?</a>
+                <button class="btn secondary" data-modal="song-suggestion">Sugerir Canción</button>
+            </div>
+        </section>
+        
+        <section class="gallery-section">
+            <h2>Retratos de Nuestro Amor</h2>
+            <div class="photo-grid">
+                <img src="assets/foto1.jpg" alt="Foto de boda 1">
+                <img src="assets/foto2.jpg" alt="Foto de boda 2">
+                </div>
+        </section>
+
+        <section class="info-section">
+            <h2>Regalos</h2>
+            <p>Lo más importante es tu presencia, pero si deseas hacernos un regalo, puedes hacerlo a través de nuestra lista:</p>
+            <button class="btn primary" data-modal="gifts">Ver Opciones de Regalo</button>
+
+            <h2>Compartimos este día</h2>
+            <p>Sube tus fotos a Instagram con nuestro hashtag:</p>
+            <a href="https://www.instagram.com/" target="_blank" class="btn secondary">#TUSNOMBRES</a>
+        </section>
+
+        <footer>
+            <p>&copy; 2024 <div Angela=""></div> & <div Alejandro=""></div></p>
+            <p>Invitación Digital</p>
+        </footer>
+
+    </div>
+    
+    <div id="modal-rsvp" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h4>Confirma tu Asistencia</h4>
+            <form id="rsvp-form">
+                <label for="guest-name">Tu Nombre Completo</label>
+                <input type="text" id="guest-name" name="entry.1744928771" required>
+                
+                <label>¿Asistirás a la Fiesta?</label>
+                <input type="radio" name="entry.1963293969" value="Si asisto" required> Sí
+                <input type="radio" name="entry.1963293969" value="No asisto"> No
+                
+                <label for="companions">N° de Acompañantes (incluyéndote)</label>
+                <input type="number" id="companions" name="entry.730200983" min="1" value="1" required>
+
+                <button type="submit" class="btn primary">Enviar Confirmación</button>
+                <p id="rsvp-message" style="margin-top: 10px; color: green;"></p>
+            </form>
+        </div>
+    </div>
+    
+    <div id="modal-song-suggestion" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h4>Sugiere una Canción</h4>
+            <form id="song-form">
+                <label for="song">¿Qué canción no debe faltar?</label>
+                <input type="text" id="song" name="entry.AAAAAAAAA" required>
+                <button type="submit" class="btn primary">Sugerir</button>
+                <p id="song-message" style="margin-top: 10px; color: green;"></p>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

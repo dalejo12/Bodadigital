@@ -1,0 +1,235 @@
+/* 1. RESET Y FUENTES */
+:root {
+    --primary-color: #795548; /* Marrón o color principal */
+    --secondary-color: #f5f5f5; /* Fondo claro */
+    --font-serif: 'Playfair Display', serif;
+    --font-sans: 'Montserrat', sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-sans);
+    line-height: 1.6;
+    background-color: var(--secondary-color);
+    color: #333;
+    /* Esto simula el scroll vertical de una app/web mobile */
+}
+
+/* 2. PANTALLA DE BIENVENIDA (SPLASH) */
+#welcome-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('assets/background.jpg') no-repeat center center/cover; /* Reemplaza con tu imagen */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+    z-index: 100;
+}
+#welcome-screen h1 {
+    font-family: var(--font-serif);
+    font-size: 2.5em;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+}
+#welcome-screen button {
+    padding: 10px 20px;
+    background: rgba(255, 255, 255, 0.9);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+/* 3. SECCIONES GENERALES */
+section {
+    padding: 40px 20px;
+    text-align: center;
+}
+h2 {
+    font-family: var(--font-serif);
+    color: var(--primary-color);
+    font-size: 1.8em;
+    margin-bottom: 20px;
+}
+
+/* 4. HERO SECTION (Nombres y Fecha) */
+.hero-section {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 60px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.hero-section .names {
+    font-family: var(--font-serif);
+    font-size: 3em;
+    font-weight: 500;
+    line-height: 1.1;
+}
+.hero-section .ampersand {
+    font-style: italic;
+    font-size: 0.8em;
+    display: block; /* Para que caiga en línea diferente en mobile */
+}
+.hero-section .date {
+    font-size: 1.2em;
+    margin-top: 15px;
+    letter-spacing: 2px;
+}
+
+/* 5. CONTADOR REGRESIVO */
+.timer {
+    display: flex;
+    justify-content: space-around;
+    gap: 10px;
+}
+.time-box {
+    flex: 1;
+    background: white;
+    padding: 15px 5px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    font-size: 0.8em;
+    text-transform: uppercase;
+}
+.time-box span {
+    display: block;
+    font-size: 2em;
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+/* 6. EVENTOS Y BOTONES */
+.event-section {
+    border-bottom: 1px solid #ddd;
+}
+.event-section h3 {
+    color: var(--primary-color);
+    font-family: var(--font-serif);
+    font-size: 1.5em;
+    margin-bottom: 15px;
+}
+.event-section p {
+    margin-bottom: 5px;
+}
+.buttons-container {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.btn {
+    padding: 10px 20px;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+.btn.primary {
+    background-color: var(--primary-color);
+    color: white;
+}
+.btn.secondary {
+    background-color: #e0e0e0;
+    color: #333;
+}
+
+/* 7. GALERÍA */
+.photo-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* 2 columnas en mobile */
+    gap: 10px;
+}
+.photo-grid img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+/* 8. MODAL (Pop-up) */
+.modal {
+    display: none; /* Oculto por defecto */
+    position: fixed;
+    z-index: 101;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4); /* Fondo semi-transparente */
+}
+
+.modal-content {
+    background-color: white;
+    margin: 15% auto; /* Centrar verticalmente */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 90%; /* Ancho en mobile */
+    max-width: 400px;
+    border-radius: 10px;
+    position: relative;
+    text-align: left;
+}
+.close-btn {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+.close-btn:hover,
+.close-btn:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+.modal-content label {
+    display: block;
+    margin-top: 10px;
+    font-weight: bold;
+}
+.modal-content input[type="text"], 
+.modal-content input[type="number"] {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0 15px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.modal-content input[type="radio"] {
+    margin-right: 5px;
+}
+
+.modal-content button[type="submit"] {
+    width: 100%;
+    margin-top: 15px;
+}
+
+/* 9. FOOTER */
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    font-size: 0.8em;
+}
